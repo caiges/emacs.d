@@ -5,6 +5,9 @@
 (scroll-bar-mode -1)
 (setq use-dialog-box nil)
 
+;; Line numbers!
+(global-display-line-numbers-mode)
+
 ;; BORING: Ensure everything is UTF-8 all the time
 (prefer-coding-system 'utf-8)
 (setq locale-coding-system 'utf-8)
@@ -20,6 +23,20 @@
 (if (string-equal system-type "windows-nt")
     (set-clipboard-coding-system 'utf-16le-dos)
   (set-clipboard-coding-system 'utf-8))
+
+;; Tab versus spaces
+(setq-default indent-tabs-mode nil)
+(defun infer-indentation-style ()
+  ;; if our source file uses tabs, we use tabs, if spaces spaces, and if        
+  ;; neither, we use the current indent-tabs-mode                               
+  (let ((space-count (how-many "^  " (point-min) (point-max)))
+        (tab-count (how-many "^\t" (point-min) (point-max))))
+    (if (> space-count tab-count) (setq indent-tabs-mode nil))
+    (if (> tab-count space-count) (setq indent-tabs-mode t))))
+(infer-indentation-style)
+
+;; indent by 2
+(setq tab-stop-list (number-sequence 2 120 2))
 
 ;; Add the fantastic marmalade package repository to your lists to access hundreds of packages
 (require 'package)
@@ -86,3 +103,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key "\M-s" 'other-window)
+
+;; put custom-set-variables in another file instead of this one
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
