@@ -64,6 +64,7 @@
         color-theme-solarized
 	spacemacs-theme
 	use-package
+        enh-ruby-mode
         ))
 
 (dolist (package my-packages) 
@@ -103,6 +104,16 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key "\M-s" 'other-window)
+
+;; Ruby specific settings
+(add-to-list 'auto-mode-alist
+             '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+
+;; Shell settings
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*shell*")
+               display-buffer-same-window
+               (reusable-frames . visible)))
 
 ;; put custom-set-variables in another file instead of this one
 (setq custom-file "~/.emacs.d/custom.el")
