@@ -65,6 +65,8 @@
 	spacemacs-theme
 	use-package
         enh-ruby-mode
+        yaml-mode
+        ansible
         ))
 
 (dolist (package my-packages) 
@@ -108,6 +110,12 @@
 ;; Ruby specific settings
 (add-to-list 'auto-mode-alist
              '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+
+;; YAML settings
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; Ansible settings
+(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
 
 ;; Shell settings
 (add-to-list 'display-buffer-alist
