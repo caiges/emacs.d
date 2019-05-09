@@ -38,6 +38,9 @@
 ;; indent by 2
 (setq tab-stop-list (number-sequence 2 120 2))
 
+;; don't fuck with the previous line when RET is pressed to go to the next line
+
+
 ;; Add the fantastic marmalade package repository to your lists to access hundreds of packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -101,7 +104,7 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; This one is kind of big, it reindents when hitting return. Something you usually need to do manually.
-(global-set-key (kbd "RET") 'reindent-then-newline-and-indent)
+;;(global-set-key (kbd "RET") 'reindent-then-newline-and-indent)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
