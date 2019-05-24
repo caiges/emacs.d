@@ -55,21 +55,7 @@
 ;; Automatically install a bunch of useful packages. You should look read up about these.
 (setq my-packages
       '(
-        ido
-        json
-        magit
-        js2-mode
-        web-mode
-        undo-tree
-        expand-region
-        multiple-cursors
-        markdown-mode
-        color-theme-solarized
-	spacemacs-theme
 	use-package
-        enh-ruby-mode
-        yaml-mode
-        ansible
         ))
 
 (dolist (package my-packages) 
@@ -81,6 +67,53 @@
 (use-package spacemacs-common
     :ensure spacemacs-theme
     :config (load-theme 'spacemacs-dark t))
+
+(use-package ace-window
+  :bind (
+         ("M-o" . ace-window)
+        ) 
+  :ensure t)
+
+(use-package ido
+  :ensure t)
+
+(use-package json
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+
+(use-package js2-mode
+  :ensure t)
+
+(use-package web-mode
+  :ensure t)
+
+(use-package undo-tree
+  :ensure t)
+
+(use-package expand-region
+  :ensure t)
+
+(use-package multiple-cursors
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package enh-ruby-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package ansible
+  :ensure t)
+
+(use-package go-mode
+  :ensure t)
+
+
 (global-undo-tree-mode)
 (ido-mode t)
 
@@ -125,6 +158,10 @@
              `(,(rx bos "*shell*")
                display-buffer-same-window
                (reusable-frames . visible)))
+
+;; Golang settings
+(add-hook 'before-save-hook #'gofmt-before-save)
+
 
 ;; put custom-set-variables in another file instead of this one
 (setq custom-file "~/.emacs.d/custom.el")
