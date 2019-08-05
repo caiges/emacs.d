@@ -1,3 +1,6 @@
+;; Fix SSL issue where we can't hit elpa!
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; Don't need buttons in emacs! By running this early we avoid a flash
 ;; of buttons before they are removed.
 (menu-bar-mode -1)
