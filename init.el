@@ -114,8 +114,10 @@
   :ensure t)
 
 (use-package go-mode
-  :ensure t)
-
+  :ensure t
+  :init
+  (add-hook 'before-save-hook #'gofmt-before-save)
+)
 
 (global-undo-tree-mode)
 (ido-mode t)
