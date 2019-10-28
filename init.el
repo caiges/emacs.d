@@ -1,3 +1,4 @@
+
 ;; Fix SSL issue where we can't hit elpa!
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -7,6 +8,12 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq use-dialog-box nil)
+
+;; Put temp files in the system's temp directory.
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; Line numbers!
 (global-display-line-numbers-mode)
@@ -118,6 +125,9 @@
   :init
   (add-hook 'before-save-hook #'gofmt-before-save)
 )
+
+(use-package groovy-mode
+  :ensure t)
 
 (global-undo-tree-mode)
 (ido-mode t)
