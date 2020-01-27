@@ -48,8 +48,10 @@
 ;; indent by 2
 (setq tab-stop-list (number-sequence 2 120 2))
 
-;; don't fuck with the previous line when RET is pressed to go to the next line
+;; tab width 2 spaces
+(setq-default tab-width 2)
 
+;; don't fuck with the previous line when RET is pressed to go to the next line
 
 ;; Add the fantastic marmalade package repository to your lists to access hundreds of packages
 (require 'package)
@@ -153,6 +155,9 @@
 )
 
 (use-package groovy-mode
+  :ensure t)
+
+(use-package terraform-mode
   :ensure t)
 
 (global-undo-tree-mode)
