@@ -160,6 +160,15 @@
 (use-package terraform-mode
   :ensure t)
 
+(use-package salt-mode
+  :ensure t)
+
+(use-package find-file-in-project
+  :ensure t
+  :config
+  (setq ffip-use-rust-fd t)    
+)
+
 (global-undo-tree-mode)
 (ido-mode t)
 
@@ -188,6 +197,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key "\M-s" 'other-window)
+
+;; Find file in project
+(global-set-key (kbd "C-t") 'find-file-in-project)
 
 ;; Ruby specific settings
 (add-to-list 'auto-mode-alist
