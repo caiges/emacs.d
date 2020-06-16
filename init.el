@@ -201,6 +201,12 @@
 ;; Find file in project
 (global-set-key (kbd "C-t") 'find-file-in-project)
 
+;;resizing windows
+(global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>")  'shrink-window)
+(global-set-key (kbd "S-C-<up>")    'enlarge-window)
+
 ;; Ruby specific settings
 (add-to-list 'auto-mode-alist
              '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
