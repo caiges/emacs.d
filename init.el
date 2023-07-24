@@ -169,12 +169,32 @@
   (setq ffip-use-rust-fd t)    
 )
 
+(use-package tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(use-package dap-mode
+  :ensure t)
+
+;; optional if you want which-key integration
+(use-package which-key
+  :ensure t)
+
+;(use-package which-key
+;    :config
+;    (which-key-mode))
+
+(use-package rust-mode
+  :ensure t)
+
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (XXX-mode . lsp)
+         (rust-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
@@ -190,11 +210,6 @@
 ;; optionally if you want to use debugger
 (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-
-;; optional if you want which-key integration
-(use-package which-key
-    :config
-    (which-key-mode))
 
 (global-undo-tree-mode)
 (ido-mode t)
