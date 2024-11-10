@@ -55,6 +55,7 @@
 
 ;; Add the fantastic marmalade package repository to your lists to access hundreds of packages
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (dolist (source package-archives)
@@ -210,6 +211,8 @@
 ;; optionally if you want to use debugger
 (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+(use-package 
 
 (global-undo-tree-mode)
 (ido-mode t)
